@@ -36,16 +36,17 @@ int scanAndPrint(){
 
 	while(ptr != NULL){
 		count++; //Increments count for tokens present
+		if(strlen(ptr) > 20){
+		    printf("ERROR! Input string too long.\n");
+		    scanAndPrint(); //Recursive call in case user enters too many tokens
+		    return 0;
+		}
 		if(count > 2){
 			printf("ERROR! Incorrect number of tokens found.\n");
 			scanAndPrint(); //Recursive call in case user enters too many tokens
 			return 0;
 			}
-		if(strlen(ptr) > 20){
-			printf("ERROR! Input string too long.\n");
-			scanAndPrint(); //Recursive call in case user enters too many tokens
-			return 0;
-		}
+
 		//If the first token is equal to quit (case insensitive), the program finishes
 		if((strcasecmp(ptr, "quit") == 0) && count <= 1){
 			return 0;
