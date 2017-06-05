@@ -23,6 +23,7 @@ int scanAndPrint(){
 	int count = 0;
 	int INTTrue;
 	int STRTrue;
+	int TotalChars;
 
 	printf("> "); //Caret used to initiate user input
 	fgets(buff, 65, stdin); //Takes in no more than 65 chars into the buff array
@@ -66,6 +67,13 @@ int scanAndPrint(){
 			printf("ERROR! Incorrect number of tokens found.\n");
 			scanAndPrint(); //Recursive call in case user enters too many tokens
 			return 0;
+			}
+			
+			TotalChars += strlen(ptr);
+			if(TotalChars > 20){
+			    printf("ERROR! Input string too long.\n");
+			    scanAndPrint();
+			    return 0;
 			}
 
 		//If the token is a number (no decimals), then "INT" is printed
