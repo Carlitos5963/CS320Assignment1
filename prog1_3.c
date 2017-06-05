@@ -28,20 +28,27 @@ int scanAndPrint(){
 	strncpy(buff2, buff, 66); //Copy user input into another array for later use
 
 	ptr = strtok(buff, " "); //Breaks up array into tokens separated by spaces
-	count = 1; //Counter for tokens
+	count = 0; //Counter for tokens
 	while(ptr != NULL){
-		
+	    
+	    count++; //Increments count for tokens present
 		if(count > 2){
 			printf("ERROR! Incorrect number of tokens found.\n");
 			scanAndPrint(); //Recursive call in case user enters too many tokens
 			return 0;
 			}
 		ptr = strtok(NULL, " "); //Moves on in the char array
-		count++; //Increments count for tokens present
+		
 		}
 	ptr = strtok(buff2, " "); //Breaks up array into tokens separated by spaces
 	
 	while(ptr != NULL){
+	    
+	    if(count <= 0){
+			printf("ERROR! Incorrect number of tokens found.\n");
+			scanAndPrint(); //Recursive call in case user enters too many tokens
+			return 0;
+			}
 
 		//If the token is a number (no decimals), then "INT" is printed
 		if(tokenCheck(ptr)){
