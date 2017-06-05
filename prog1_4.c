@@ -47,7 +47,7 @@ int scanAndPrint(){
 			return 0;
 		}
 		//If the first token is equal to quit (case insensitive), the program finishes
-		if((strcasecmp(ptr, "quit\n") == 0) && count <= 1){
+		if((strcasecmp(ptr, "quit") == 0) && count <= 1){
 			return 0;
 		}
 		ptr = strtok(NULL, " \n"); //Moves on in the char array
