@@ -34,7 +34,6 @@ int scanAndPrint(){
 	ptr = strtok(buff, " \n"); //Breaks up array into tokens separated by spaces
 
 	count = 0; //Counter for tokens
-	}
 
 	while(ptr != NULL){
 		count++; //Increments count for tokens present
