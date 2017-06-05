@@ -16,7 +16,7 @@ int main(){
 	//When the pointer reaches a NULL space, print the word, then move on in the array.
 	while(ptr != NULL){
 		printf("=%s=\n", ptr);
-		ptr = strtok(NULL, " ");
+		ptr = strtok(NULL, " \n");
 	}
 
 	return 0;
