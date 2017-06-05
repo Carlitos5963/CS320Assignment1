@@ -35,6 +35,7 @@ int scanAndPrint(){
 	count = 0; //Counter for tokens
 	if(buff[25] != NULL || buff[25] != '\n'){
 	    printf("ERROR! Input string too long.");
+	    scanAndPrint();
 	    return 0;
 	}
 
