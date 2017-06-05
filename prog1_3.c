@@ -40,7 +40,7 @@ int scanAndPrint(){
 		ptr = strtok(NULL, " \n"); //Moves on in the char array
 		
 		}
-	ptr = strtok(buff2, " \n"); //Breaks up array into tokens separated by spaces
+	ptr = strtok(buff2, " "); //Breaks up array into tokens separated by spaces
 	
 	while(ptr != NULL){
 	    
