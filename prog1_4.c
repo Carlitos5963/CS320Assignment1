@@ -41,7 +41,7 @@ int scanAndPrint(){
 			scanAndPrint(); //Recursive call in case user enters too many tokens
 			return 0;
 			}
-		if(strlen(ptr) > 21){
+		if(strlen(ptr) > 20){
 			printf("ERROR! Input string too long.\n");
 			scanAndPrint(); //Recursive call in case user enters too many tokens
 			return 0;
