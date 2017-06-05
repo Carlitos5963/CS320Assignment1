@@ -21,6 +21,8 @@ int scanAndPrint(){
 	char buff[66];
 	char buff2[66];
 	int count = 0;
+	int INTTrue;
+	int STRTrue;
 
 	printf("> "); //Caret used to initiate user input
 	fgets(buff, 65, stdin); //Takes in no more than 65 chars into the buff array
@@ -63,12 +65,18 @@ int scanAndPrint(){
 		//If the token is a number (no decimals), then "INT" is printed
 		if(tokenCheck(ptr)){
 			printf("INT ");
+			INTTrue++;
 		}
 		//If token is not an int, then "STR" is printed
 		else{
 			printf("STR ");
+			STRTrue++;
 		}
 		ptr = strtok(NULL, " \n");
+		if((INTTrue >= 1 || STRTrue >= 1) && ptr == NULL){
+		    printf("\n");
+		    scanAndPrint();
+		}
 	}
 	if(count <= 0){
 			printf("ERROR! Incorrect number of tokens found.\n");
