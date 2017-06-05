@@ -33,6 +33,10 @@ int scanAndPrint(){
 	ptr = strtok(buff, " \n"); //Breaks up array into tokens separated by spaces
 
 	count = 0; //Counter for tokens
+	if(buff[25] != NULL || buff[25] != '\n'){
+	    printf("ERROR! Input string too long.");
+	    return 0;
+	}
 
 	while(ptr != NULL){
 		count++; //Increments count for tokens present
