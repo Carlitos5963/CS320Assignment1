@@ -83,8 +83,7 @@ int scanAndPrint(){
 			scanAndPrint(); //Recursive call in case user enters too many tokens
 			return 0;
 			}
-	printf("\n");		
-	scanAndPrint();		
+		
 
 	return 0;
 }
