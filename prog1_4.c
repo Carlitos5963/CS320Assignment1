@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 //This method is used to check for integers, not including doublesor floats.
 int tokenCheck(char *e){
@@ -31,44 +32,43 @@ int scanAndPrint(){
 	strncpy(buff2, buff, 66); //Copy user input into another array for later use
 
 	ptr = strtok(buff, " \n"); //Breaks up array into tokens separated by spaces
-
 	count = 0; //Counter for tokens
 
-    
+
 	while(ptr != NULL){
+
+
 		count++; //Increments count for tokens present
 		if(strlen(ptr) > 20){
-		    printf("ERROR! Input string too long.\n");
-		    scanAndPrint(); //Recursive call in case user enters too many tokens
-		    return 0;
-		}
-
-
-		//If the first token is equal to quit (case insensitive), the program finishes
-		if((strcasecmp(ptr, "quit") == 0) && count <= 1){
+			printf("ERROR! Input string too long.\n");
+			scanAndPrint(); //Recursive call in case user enters too many tokens
 			return 0;
 		}
-	    TotalChars += strlen(ptr);
-		ptr = strtok(NULL, " \n"); //Moves on in the char array
-		
-		}
-	ptr = strtok(buff2, " \n"); //Breaks up array into tokens separated by spaces
-	
-	while(ptr != NULL){
-
-		if(TotalChars > 20){
-		    printf("ERROR! Input string too long.\n");
-		    scanAndPrint();
-		    return 0;
-			}
-
-	    if(count <= 0 || count >2){
+		if(count > 2){
 			printf("ERROR! Incorrect number of tokens found.\n");
 			scanAndPrint(); //Recursive call in case user enters too many tokens
 			return 0;
 			}
-			
 
+		//If the first token is equal to quit (case insensitive), the program finishes
+		if((strcasecmp(ptr, "quit") == 0) && count <= 1){
+			exit(0);
+			return 0;
+		}
+		ptr = strtok(NULL, " \n"); //Moves on in the char array
+
+		}
+
+		
+	ptr = strtok(buff2, " \n"); //Breaks up array into tokens separated by spaces
+	
+	while(ptr != NULL){
+		TotalChars += strlen(ptr);
+		if(TotalChars > 20){
+			printf("ERROR! Input string too long.\n");
+			scanAndPrint(); //Recursive call in case user enters too many tokens
+			return 0;
+		}
 
 		//If the token is a number (no decimals), then "INT" is printed
 		if(tokenCheck(ptr)){
@@ -81,17 +81,18 @@ int scanAndPrint(){
 			STRTrue++;
 		}
 		ptr = strtok(NULL, " \n");
+
 		if((INTTrue >= 1 || STRTrue >= 1) && ptr == NULL){
-		    printf("\n");
-		    scanAndPrint();
-		}
-	}
-	if(count <= 0 || count > 2){
-			printf("ERROR! Incorrect number of tokens found.\n");
+			printf("\n");
 			scanAndPrint(); //Recursive call in case user enters too many tokens
-			return 0;
-			}
-		
+		}
+
+	}
+	if(count <= 0){
+		printf("ERROR! Incorrect number of tokens found.\n");
+		scanAndPrint(); //Recursive call in case user enters too many tokens
+		return 0;
+		}
 
 	return 0;
 }
@@ -102,5 +103,4 @@ int main(){
 	scanAndPrint(); //Method that does all of the work
 	return 0;
 }
-
 
