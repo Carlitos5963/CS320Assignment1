@@ -123,13 +123,13 @@ int scanAndPrint(){
 
 
 
-int main(int argc, char **argv[]){
+int main(int N, char **argv[]){
 	printf("Assignment #1-6, Jose Carlos Gomez, JoseCarlosGomez69@gmail.com\n");
-	if(argc > 1){
+	if(N > 2){
 		printf("ERROR! Program 6 accepts 1 command line argument.\n");
 		return 0;
 	}
-	if(!isdigit(argv) == 0){
+	if(isdigit(argv[1]) == 0){
 		printf("ERROR! Expected integer argument\n.");
 		return 0;
 	}
