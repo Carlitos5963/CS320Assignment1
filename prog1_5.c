@@ -75,8 +75,8 @@ int scanAndPrint(){
 			}
 
 
-		//If only 2 ints have been entered, print error and try again.
-		if((INTTrue == 2) && (STRTrue <= 0) && ptr == NULL){
+		//If only 2 ints or 2 string have been entered, print error and try again.
+		if(((INTTrue == 2) && (STRTrue <= 0)) || ((INTTrue <= 0) && (STRTrue == 2)) && ptr == NULL){
 			printf("ERROR! Expected STR INT.\n");
 			scanAndPrint(); //Recursive call in case user enters too many tokens
 			return 0;
@@ -116,6 +116,8 @@ int scanAndPrint(){
 		}
 		ptr = strtok(NULL, " ");
 	}
+	printf("\n");
+	scanAndPrint(); //Will continue to prompt the user for input until they quit.
 	return 0;
 }
 
