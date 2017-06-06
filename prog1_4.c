@@ -20,6 +20,7 @@ int scanAndPrint(){
 	char *ptr;
 	char buff[66];
 	char buff2[66];
+	char buff3[66];
 	int count = 0;
 	int INTTrue;
 	int STRTrue;
@@ -29,12 +30,24 @@ int scanAndPrint(){
 	fgets(buff, 65, stdin); //Takes in no more than 65 chars into the buff array
 
 	strncpy(buff2, buff, 66); //Copy user input into another array for later use
+	strncpy(buff3, buff, 66); //Copy user input into another array for later use
 
+    ptr = strtok(buff3, " \n"); //Breaks up array into tokens separated by spaces
+    while(ptr != NULL){
+        TotalChars += strlen(ptr);
+		if(TotalChars > 20){
+		    printf("ERROR! Input string too long.\n");
+		    scanAndPrint();
+		    return 0;
+			}
+        ptr = strtok(NULL, " \n"); //Moves on in the char array
+    }
 
 	ptr = strtok(buff, " \n"); //Breaks up array into tokens separated by spaces
 
 	count = 0; //Counter for tokens
 
+    
 	while(ptr != NULL){
 		count++; //Increments count for tokens present
 		if(strlen(ptr) > 20){
@@ -59,13 +72,7 @@ int scanAndPrint(){
 	
 	while(ptr != NULL){
 	    
-	    TotalChars += strlen(ptr);
-		if(TotalChars > 20){
-		    printf("ERROR! Input string too long.\n");
-		    scanAndPrint();
-		    return 0;
-		    
-			}
+
 	    if(count <= 0){
 			printf("ERROR! Incorrect number of tokens found.\n");
 			scanAndPrint(); //Recursive call in case user enters too many tokens
