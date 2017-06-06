@@ -137,7 +137,6 @@ int main(int N, char *argv[]){
 		printf("ERROR! Program 6 accepts 1 command line argument.\n");
 		return 0;
 	}
-printf(" %s\n", argv[1]);
 	if(tokenCheck(argv[1]) == 0){
 		printf("ERROR! Expected integer argument\n.");
 		return 0;
