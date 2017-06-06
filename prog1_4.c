@@ -30,9 +30,6 @@ int scanAndPrint(){
 
 	strncpy(buff2, buff, 66); //Copy user input into another array for later use
 
-    ptr = strtok(NULL, " \n"); //Moves on in the char array
-    }
-
 	ptr = strtok(buff, " \n"); //Breaks up array into tokens separated by spaces
 
 	count = 0; //Counter for tokens
