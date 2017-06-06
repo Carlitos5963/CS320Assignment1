@@ -2,6 +2,8 @@
 #include <string.h>
 #include <ctype.h>
 
+static int inputs; // Method used to keep track of how many times we asked for input
+
 //This method is used to check for integers, not including doublesor floats.
 int tokenCheck(char *e){
 	//If there is a space, newline, or string termination, the loop stops
@@ -16,7 +18,12 @@ int tokenCheck(char *e){
 
 
 //Method used to take in data and break up data into tokens
-int scanAndPrint(){
+int scanAndPrint(int N){
+	inputs++; //Increment the amount of times this method is called.
+	if(inputs > (N + 1)){
+		return 0;
+	}
+
 	char *ptr;
 	char buff[66];
 	char buff2[66];
@@ -56,7 +63,7 @@ int scanAndPrint(){
 		//If token length is longer than 20 chars, error and try again
 		if(strlen(ptr) > 21){
 			printf("ERROR! Input string too long.\n");
-			scanAndPrint(); //Recursive call in case user enters too many tokens
+			scanAndPrint(N); //Recursive call in case user enters too many tokens
 			return 0;
 		}
 
@@ -70,7 +77,7 @@ int scanAndPrint(){
 		//Checks to see if more than 2 tokens have been entered.
 		if(count > 2){
 			printf("ERROR! Incorrect number of tokens found.\n");
-			scanAndPrint(); //Recursive call in case user enters too many tokens
+			scanAndPrint(N); //Recursive call in case user enters too many tokens
 			return 0;
 			}
 
@@ -78,21 +85,21 @@ int scanAndPrint(){
 		//If only 2 ints or 2 string have been entered, print error and try again.
 		if(((INTTrue == 2) && (STRTrue <= 0)) || ((INTTrue <= 0) && (STRTrue == 2)) && ptr == NULL){
 			printf("ERROR! Expected STR INT.\n");
-			scanAndPrint(); //Recursive call in case user enters too many tokens
+			scanAndPrint(N); //Recursive call in case user enters too many tokens
 			return 0;
 		} 
 
 		//If only 1 int is entered, print error and try again.
 		if(ptr == NULL && INTTrue == 1 && STRTrue == 0){
 			printf("ERROR! Expected STR.\n");
-			scanAndPrint();
+			scanAndPrint(N);
 			return 0;
 		}
 
 		//If only 1 STR is entered, print "STR" and try again.
 		if(ptr == NULL && INTTrue == 0 && STRTrue == 1){
 			printf("STR \n");
-			scanAndPrint();
+			scanAndPrint(N);
 			return 0;
 		}
 	}
@@ -117,7 +124,7 @@ int scanAndPrint(){
 		ptr = strtok(NULL, " ");
 	}
 	printf("\n");
-	scanAndPrint(); //Will continue to prompt the user for input until they quit.
+	scanAndPrint(N); //Will continue to prompt the user for input until they quit.
 	return 0;
 }
 
@@ -125,15 +132,16 @@ int scanAndPrint(){
 
 int main(int N, char *argv[]){
 	printf("Assignment #1-6, Jose Carlos Gomez, JoseCarlosGomez69@gmail.com\n");
+
 	if(N != 2){
 		printf("ERROR! Program 6 accepts 1 command line argument.\n");
 		return 0;
 	}
+printf(" %s\n", argv[1]);
 	if(tokenCheck(argv[1]) == 0){
 		printf("ERROR! Expected integer argument\n.");
 		return 0;
 	}
-	scanAndPrint(); //Method that does all of the work
+	scanAndPrint(N); //Method that does all of the work
 	return 0;
 }
-
