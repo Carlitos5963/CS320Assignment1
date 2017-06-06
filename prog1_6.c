@@ -133,6 +133,7 @@ int scanAndPrint(int argNum){
 
 int main(int N, char *argv[]){
 
+    printf("Assignment #1-6, Jose Carlos Gomez, JoseCarlosGomez69@gmail.com\n");
 	int argNum;
 	if(tokenCheck(argv[1]) != 0){ //If the argument is a number then convert it from string to int
 		argNum = atoi(argv[1]);
@@ -140,7 +141,7 @@ int main(int N, char *argv[]){
 			return 0;
 		}
 	}
-	printf("Assignment #1-6, Jose Carlos Gomez, JoseCarlosGomez69@gmail.com\n");
+	
 
 	if(N != 2){
 		printf("ERROR! Program 6 accepts 1 command line argument.\n");
