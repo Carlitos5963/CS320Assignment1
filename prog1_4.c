@@ -57,19 +57,17 @@ int scanAndPrint(){
 
 		
 	ptr = strtok(buff2, " \n"); //Breaks up array into tokens separated by spaces
-	
+	if(TotalChars > 20){
+		printf("ERROR! Input string too long.\n");
+		scanAndPrint(); //Recursive call in case user enters too many tokens
+	    return 0;
+	}
 	if(count > 2 || count <=0){
-	printf("ERROR! Incorrect number of tokens found.\n");
-	scanAndPrint(); //Recursive call in case user enters too many tokens
-	return 0;
+	    printf("ERROR! Incorrect number of tokens found.\n");
+	    scanAndPrint(); //Recursive call in case user enters too many tokens
+	    return 0;
 	}
 	while(ptr != NULL){
-
-		if(TotalChars > 20){
-			printf("ERROR! Input string too long.\n");
-			scanAndPrint(); //Recursive call in case user enters too many tokens
-			return 0;
-		}
 
 		//If the token is a number (no decimals), then "INT" is printed
 		if(tokenCheck(ptr)){
