@@ -93,7 +93,7 @@ int scanAndPrint(){
 		return 0;
 		}
 
-    printAndScan();
+    scanAndPrint();
 	return 0;
 }
 
