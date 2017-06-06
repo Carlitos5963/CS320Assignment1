@@ -44,11 +44,7 @@ int scanAndPrint(){
 			scanAndPrint(); //Recursive call in case user enters too many tokens
 			return 0;
 		}
-		if(count > 2){
-			printf("ERROR! Incorrect number of tokens found.\n");
-			scanAndPrint(); //Recursive call in case user enters too many tokens
-			return 0;
-			}
+
 
 		//If the first token is equal to quit (case insensitive), the program finishes
 		if((strcasecmp(ptr, "quit") == 0) && count <= 1){
@@ -62,6 +58,11 @@ int scanAndPrint(){
 		
 	ptr = strtok(buff2, " \n"); //Breaks up array into tokens separated by spaces
 	
+	if(count > 2 || count <=0){
+	printf("ERROR! Incorrect number of tokens found.\n");
+	scanAndPrint(); //Recursive call in case user enters too many tokens
+	return 0;
+	}
 	while(ptr != NULL){
 
 		if(TotalChars > 20){
