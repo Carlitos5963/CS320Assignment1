@@ -36,7 +36,7 @@ int scanAndPrint(){
 
 
 	while(ptr != NULL){
-
+		TotalChars += strlen(ptr); //Counts the total characters entered.
 
 		count++; //Increments count for tokens present
 		if(strlen(ptr) > 20){
@@ -63,7 +63,7 @@ int scanAndPrint(){
 	ptr = strtok(buff2, " \n"); //Breaks up array into tokens separated by spaces
 	
 	while(ptr != NULL){
-		TotalChars += strlen(ptr);
+
 		if(TotalChars > 20){
 			printf("ERROR! Input string too long.\n");
 			scanAndPrint(); //Recursive call in case user enters too many tokens
