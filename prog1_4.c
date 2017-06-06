@@ -93,6 +93,7 @@ int scanAndPrint(){
 		return 0;
 		}
 
+    printf("\n");
     scanAndPrint();
 	return 0;
 }
