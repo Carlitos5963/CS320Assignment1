@@ -125,7 +125,7 @@ int scanAndPrint(){
 
 int main(int N, char **argv[]){
 	printf("Assignment #1-6, Jose Carlos Gomez, JoseCarlosGomez69@gmail.com\n");
-	if(N > 2){
+	if(N != 2){
 		printf("ERROR! Program 6 accepts 1 command line argument.\n");
 		return 0;
 	}
