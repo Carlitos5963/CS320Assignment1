@@ -36,7 +36,7 @@ int scanAndPrint(){
 
 
 	while(ptr != NULL){
-		TotalChars += strlen(ptr); //Counts the total characters entered.
+		TotalChars += strlen(ptr);
 
 		count++; //Increments count for tokens present
 		if(strlen(ptr) > 20){
@@ -44,7 +44,6 @@ int scanAndPrint(){
 			scanAndPrint(); //Recursive call in case user enters too many tokens
 			return 0;
 		}
-
 
 		//If the first token is equal to quit (case insensitive), the program finishes
 		if((strcasecmp(ptr, "quit") == 0) && count <= 1){
@@ -57,17 +56,20 @@ int scanAndPrint(){
 
 		
 	ptr = strtok(buff2, " \n"); //Breaks up array into tokens separated by spaces
+	
 	if(TotalChars > 20){
 		printf("ERROR! Input string too long.\n");
 		scanAndPrint(); //Recursive call in case user enters too many tokens
-	    return 0;
-	}
-	if(count > 2 || count <=0){
-	    printf("ERROR! Incorrect number of tokens found.\n");
-	    scanAndPrint(); //Recursive call in case user enters too many tokens
-	    return 0;
-	}
+		return 0;
+		}
+	if(count > 2){
+		printf("ERROR! Incorrect number of tokens found.\n");
+		scanAndPrint(); //Recursive call in case user enters too many tokens
+		return 0;
+		}
 	while(ptr != NULL){
+
+
 
 		//If the token is a number (no decimals), then "INT" is printed
 		if(tokenCheck(ptr)){
@@ -93,8 +95,8 @@ int scanAndPrint(){
 		return 0;
 		}
 
-    printf("\n");
-    scanAndPrint();
+	printf("\n");
+	scanAndPrint();
 	return 0;
 }
 
