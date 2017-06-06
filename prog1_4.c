@@ -42,11 +42,7 @@ int scanAndPrint(){
 		    scanAndPrint(); //Recursive call in case user enters too many tokens
 		    return 0;
 		}
-		if(count > 2){
-			printf("ERROR! Incorrect number of tokens found.\n");
-			scanAndPrint(); //Recursive call in case user enters too many tokens
-			return 0;
-			}
+
 
 		//If the first token is equal to quit (case insensitive), the program finishes
 		if((strcasecmp(ptr, "quit") == 0) && count <= 1){
@@ -66,7 +62,7 @@ int scanAndPrint(){
 		    return 0;
 			}
 
-	    if(count <= 0){
+	    if(count <= 0 || count >2){
 			printf("ERROR! Incorrect number of tokens found.\n");
 			scanAndPrint(); //Recursive call in case user enters too many tokens
 			return 0;
@@ -90,7 +86,7 @@ int scanAndPrint(){
 		    scanAndPrint();
 		}
 	}
-	if(count <= 0){
+	if(count <= 0 || count > 2){
 			printf("ERROR! Incorrect number of tokens found.\n");
 			scanAndPrint(); //Recursive call in case user enters too many tokens
 			return 0;
